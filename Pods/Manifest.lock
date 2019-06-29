@@ -1,0 +1,48 @@
+PODS:
+  - Alamofire (4.8.2)
+  - IQKeyboardManagerSwift (5.0.0)
+  - Realm (3.14.2):
+    - Realm/Headers (= 3.14.2)
+  - Realm/Headers (3.14.2)
+  - RealmSwift (3.14.2):
+    - Realm (= 3.14.2)
+  - SDWebImage (4.4.7):
+    - SDWebImage/Core (= 4.4.7)
+  - SDWebImage/Core (4.4.7)
+  - SwiftyJSON (4.3.0)
+  - Toast-Swift (4.0.1)
+  - UIColor_Hex_Swift (4.0.2)
+
+DEPENDENCIES:
+  - Alamofire
+  - IQKeyboardManagerSwift (= 5.0.0)
+  - RealmSwift (~> 3.14.0)
+  - SDWebImage (~> 4.0)
+  - SwiftyJSON (~> 4.0)
+  - Toast-Swift (~> 4.0)
+  - UIColor_Hex_Swift (~> 4.0.1)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - Realm
+    - RealmSwift
+    - SDWebImage
+    - SwiftyJSON
+    - Toast-Swift
+    - UIColor_Hex_Swift
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  IQKeyboardManagerSwift: 3f340202ebe1a7076279b9b9b3c817243ddb3aab
+  Realm: 179c6706e3a49dbfe112e572fd3c03d3169bea35
+  RealmSwift: 1797f272fb51c555b764fada32e82159a2c65247
+  SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
+  UIColor_Hex_Swift: 2fb123c7d864994a5137ef57c4dc55e17a657d29
+
+PODFILE CHECKSUM: dc1a3fdfd792036c857ac59c78c06a5face8ac23
+
+COCOAPODS: 1.5.3
