@@ -15,6 +15,6 @@ class QueryRealmEntity: Object {
     @objc dynamic var query = ""
 
     override class func primaryKey() -> String? {
-        return "query"
+        return "identifier"
     }
 }

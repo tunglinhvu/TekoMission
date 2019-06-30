@@ -1,5 +1,5 @@
 //
-//  ExtraEntity.swift
+//  ExtraResEntity.swift
 //  TekoMission
 //
 //  Created by linhvt on 6/29/19.
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SwiftyJSON
 
-class ExtraEntity: NSObject {
+class ExtraResEntity: NSObject {
     var totalItems: Int = 0
     var page: Int = 0
     var pageSize: Int = 0

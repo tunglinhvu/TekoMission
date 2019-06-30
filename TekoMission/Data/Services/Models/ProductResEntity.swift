@@ -1,5 +1,5 @@
 //
-//  ProductEntityResponse.swift
+//  ProductResEntity.swift
 //  TekoMission
 //
 //  Created by linhvt on 6/29/19.
@@ -8,9 +8,8 @@
 
 import UIKit
 import SwiftyJSON
-import RealmSwift
 
-class ProductEntityResponse: NSObject {
+class ProductResEntity: NSObject {
     var sku = ""
     var name = ""
     var price: Int = 0
@@ -39,16 +38,5 @@ class ProductEntityResponse: NSObject {
                 images.append(url)
             }
         }
-    }
-
-    func convertToRealmObject() -> ProductRealmEntity {
-        let realmObject = ProductRealmEntity()
-        realmObject.sku = self.sku
-        realmObject.name = self.name
-        realmObject.price = self.price
-        realmObject.priceBeforeSale = self.priceBeforeSale
-        realmObject.images = List<String>()
-        realmObject.images.append(objectsIn: self.images)
-        return realmObject
     }
 }

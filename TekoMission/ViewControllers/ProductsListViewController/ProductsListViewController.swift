@@ -52,9 +52,9 @@ class ProductsListViewController: BaseViewController {
             self.showLoadingIndicator()
         }
         let sv = ProductsService()
-        sv.requestListProducts(query: query) { (productsListResponse, responseResult) in
+        sv.requestListProducts(query: query) { (ProductsListResEntity, responseResult) in
             self.hideLoadingIndicator()
-            guard responseResult.code == .success, let productsListRes = productsListResponse else {
+            guard responseResult.code == .success, let productsListRes = ProductsListResEntity else {
                 self.showToast(message: responseResult.description)
                 return
             }

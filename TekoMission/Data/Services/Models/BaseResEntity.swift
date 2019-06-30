@@ -1,5 +1,5 @@
 //
-//  BaseResponse.swift
+//  BaseResEntity.swift
 //  TekoMission
 //
 //  Created by linhvt on 6/29/19.
@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class BaseResponse: NSObject {
+class BaseResEntity: NSObject {
     var code: String = ""
 
     override init() {

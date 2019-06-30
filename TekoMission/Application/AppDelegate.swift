@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // toggle queueing behavior
         ToastManager.shared.isQueueEnabled = true
 
-        IQKeyboardManager.sharedManager().enable = true
-        IQKeyboardManager.sharedManager().toolbarDoneBarButtonItemText = NSLocalizedString("done", comment: "")
+//        IQKeyboardManager.sharedManager().enable = true
+//        IQKeyboardManager.sharedManager().toolbarDoneBarButtonItemText = NSLocalizedString("done", comment: "")
 
         // initialize root viewController
         let productsListVC = ProductsListViewController.instantiateFromNib()

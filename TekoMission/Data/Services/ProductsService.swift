@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-typealias GetListRankingHandler = (_ listProducts: ProductsListResponse?, _ result: TMResponseResult) -> Void
+typealias GetListRankingHandler = (_ listProducts: ProductsListResEntity?, _ result: TMResponseResult) -> Void
 
 class ProductsService: BaseService {
     func requestListProducts(query: String, completion: @escaping GetListRankingHandler) {
@@ -23,7 +23,7 @@ class ProductsService: BaseService {
             if responseType == .success {
                 let json = JSON.init(data)
 //                let data = json["data"].dictionaryValue
-                let productsListRes = ProductsListResponse.init(response: json.dictionaryValue)
+                let productsListRes = ProductsListResEntity.init(response: json.dictionaryValue)
                 let resRequest = TMResponseResult(code: .success, description: "success")
                 completion(productsListRes, resRequest)
             } else {

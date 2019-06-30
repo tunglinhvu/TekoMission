@@ -16,10 +16,10 @@ class DBManager {
 
     }
 
-    func saveProducts(_ products: [ProductEntityResponse], query: String) {
+    func saveProducts(_ products: [ProductResEntity], query: String) {
         let realm: Realm = try! Realm()
         for product in products {
-            let realmObj = product.convertToRealmObject()
+            let realmObj = ProductDTO.responseToRealm(resObj: product)
             let predicate = NSPredicate(format: "query = %@ AND sku = %@", query, product.sku)
             if let _ = realm.objects(ProductRealmEntity.self).filter(predicate).first {
                 // already added
