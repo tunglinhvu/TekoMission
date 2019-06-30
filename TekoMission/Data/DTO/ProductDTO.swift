@@ -18,6 +18,11 @@ class ProductDTO {
         realmObject.priceBeforeSale = resObj.priceBeforeSale
         realmObject.images = List<String>()
         realmObject.images.append(objectsIn: resObj.images)
+        realmObject.attributeGroups = List<AttributeGroupRealmEntity>()
+        for attributeGroup in resObj.attributeGroups {
+            let attributeGroupRealmObj = AttributeGroupDTO.responseToRealm(resObj: attributeGroup)
+            realmObject.attributeGroups.append(attributeGroupRealmObj)
+        }
         return realmObject
     }
 }

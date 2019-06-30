@@ -26,7 +26,6 @@ class ProSameKindCollectionViewCell: UICollectionViewCell {
     // MARK: - life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
 }

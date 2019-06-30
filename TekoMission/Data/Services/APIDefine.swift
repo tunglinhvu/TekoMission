@@ -14,5 +14,5 @@ struct APIDefine {
 
 struct Services {
     static let GET_PRODUCTS_LIST = "search/"
-    static let GET_PRODUCT_DETAIL = "/products/"
+    static let GET_PRODUCT_DETAIL = "products/"
 }

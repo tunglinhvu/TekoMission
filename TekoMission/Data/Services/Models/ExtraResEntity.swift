@@ -16,8 +16,8 @@ class ExtraResEntity: NSObject {
     var pageSize: Int = 0
 
     init(response: [String: JSON]) {
-        totalItems = response["totalItems"]?.intValue ?? 0
-        page = response["page"]?.intValue ?? 0
-        pageSize = response["pageSize"]?.intValue ?? 0
+        self.totalItems = response["totalItems"]?.intValue ?? 0
+        self.page = response["page"]?.intValue ?? 0
+        self.pageSize = response["pageSize"]?.intValue ?? 0
     }
 }

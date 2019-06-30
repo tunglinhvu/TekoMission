@@ -20,12 +20,12 @@ class ProductsListResEntity: BaseResEntity {
     override init(response: [String : JSON]) {
         super.init(response: response)
         if let data = response["extra"]?.dictionaryValue {
-            extra = ExtraResEntity.init(response: data)
+            self.extra = ExtraResEntity.init(response: data)
         }
         let data = response["result"]?["products"].arrayValue ?? []
         for jsonItem in data {
             let entity = ProductResEntity.init(response: jsonItem.dictionaryValue)
-            products.append(entity)
+            self.products.append(entity)
         }
     }
 }

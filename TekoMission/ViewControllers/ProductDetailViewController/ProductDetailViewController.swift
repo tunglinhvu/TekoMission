@@ -17,6 +17,8 @@ enum InfoState {
 
 class ProductDetailViewController: BaseViewController {
 
+    public static let heightViewInfo: CGFloat = 183.0
+
     // MARK: - outlets
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblPrice: UILabel!
@@ -35,7 +37,12 @@ class ProductDetailViewController: BaseViewController {
     @IBOutlet weak var lineProTechInfo: UIImageView!
     @IBOutlet weak var btnProPriceComparison: UIButton!
     @IBOutlet weak var lineProPriceComparison: UIImageView!
-
+    @IBOutlet weak var viewProDescription: UIView!
+    @IBOutlet weak var viewPriceComparison: UIView!
+    @IBOutlet weak var imvWhiteShadow: UIImageView!
+    @IBOutlet weak var lblShowMore: UILabel!
+    @IBOutlet weak var imvShowMore: UIImageView!
+    
     @IBOutlet weak var tableTechInfo: UITableView!
     @IBOutlet weak var lcHeightTableTechInfo: NSLayoutConstraint!
     @IBOutlet weak var viewShowMore: UIView!
@@ -51,6 +58,7 @@ class ProductDetailViewController: BaseViewController {
     var currentInfoState: InfoState = .techInfo
     var isConfigCarousel = false
     var imagesList: [String] = []
+    var isOpenViewInfo: Bool = false
     
     // MARK: - life cycle
     override func viewDidLoad() {
@@ -68,6 +76,7 @@ class ProductDetailViewController: BaseViewController {
         self.setupCollectionView()
         self.setupCarousel()
         self.getProductInfoFromDB()
+        self.getProductInfoFromAPI()
     }
 
     override func setupNavigationBar() {
@@ -79,6 +88,19 @@ class ProductDetailViewController: BaseViewController {
         if let product = self.product {
             self.fillData(product)
             self.setupPageControl()
+        }
+    }
+
+    func getProductInfoFromAPI() {
+        let sv = ProductsService()
+        sv.requestProductDetails(sku: self.productSku) { (productResEntity, responseResult) in
+            if (responseResult.code == .success) {
+                if let productResEntity = productResEntity {
+                    DBManager.shared.saveProduct(productResEntity, completion: { (isSuccess) in
+                        self.tableTechInfo.reloadData()
+                    })
+                }
+            }
         }
     }
 
@@ -117,6 +139,10 @@ class ProductDetailViewController: BaseViewController {
         lineProTechInfo.isHidden = (state != .techInfo)
         lineProPriceComparison.isHidden = (state != .priceComparison)
 
+        viewProDescription.isHidden = (state != .description)
+        tableTechInfo.isHidden = (state != .techInfo)
+        viewPriceComparison.isHidden = (state != .priceComparison)
+
         currentInfoState = state
     }
 
@@ -138,6 +164,20 @@ class ProductDetailViewController: BaseViewController {
     }
 
     @IBAction func showMoreAction(_ sender: Any) {
+        if let product = self.product {
+            let fullHeight: CGFloat = TechInfoTableViewCell.height * CGFloat(product.attributeGroups.count)
+            if (fullHeight > ProductDetailViewController.heightViewInfo) {
+                self.isOpenViewInfo = !self.isOpenViewInfo
+                lcHeightTableTechInfo.constant = self.isOpenViewInfo ? (fullHeight + 35.0) : ProductDetailViewController.heightViewInfo
+                UIView.animate(withDuration: 0.5) {
+                    self.view.layoutIfNeeded()
+                    self.imvWhiteShadow.isHidden = self.isOpenViewInfo ? true : false
+                    self.lblShowMore.text = self.isOpenViewInfo ? NSLocalizedString("show_less", comment: "") : NSLocalizedString("show_more", comment: "")
+                    self.imvShowMore.image = self.isOpenViewInfo ? UIImage.init(named: "ic_chevron_up") : UIImage.init(named: "ic_chevron_down")
+                }
+
+            }
+        }
     }
 
     @IBAction func descreaseOrderNumAction(_ sender: Any) {
@@ -156,17 +196,34 @@ class ProductDetailViewController: BaseViewController {
     @IBAction func paymentAction(_ sender: Any) {
     }
 
+    @IBAction func openProDescription(_ sender: Any) {
+        self.setStateForProInfo(state: .description)
+    }
+
+    @IBAction func openProTechInfo(_ sender: Any) {
+        self.setStateForProInfo(state: .techInfo)
+    }
+
+    @IBAction func openPriceComparison(_ sender: Any) {
+        self.setStateForProInfo(state: .priceComparison)
+    }
+
 }
 
 // MARK: - tableView delegate & datasource
 extension ProductDetailViewController: UITableViewDelegate, UITableViewDataSource {
     fileprivate func setupTableView() {
         self.tableTechInfo.separatorStyle = .none
+        self.tableTechInfo.showsVerticalScrollIndicator = false
+        self.tableTechInfo.isScrollEnabled = false
         self.tableTechInfo.registerCellNib(TechInfoTableViewCell.self)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        if let product = self.product {
+            return product.attributeGroups.count
+        }
+        return 0
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -179,7 +236,10 @@ extension ProductDetailViewController: UITableViewDelegate, UITableViewDataSourc
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TechInfoTableViewCell = tableView.dequeueReusableCell(TechInfoTableViewCell.self, idxPath: indexPath)
-//        cell.fillData()
+        if let product = self.product {
+            let attributeGroup = product.attributeGroups[indexPath.row]
+            cell.fillData(attributeGroup, withIndex: indexPath.row)
+        }
         return cell
     }
 

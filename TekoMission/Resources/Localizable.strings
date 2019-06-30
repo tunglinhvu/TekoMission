@@ -8,3 +8,5 @@
 
 "no_network" = "Không thể kết nối đến hệ thống, vui lòng kiểm tra kết nối mạng của bạn.";
 "fine_network" = "Kết nối mạng thành công.";
+"show_more" = "Hiển thị nhiều hơn";
+"show_less" = "Thu gọn";

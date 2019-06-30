@@ -20,6 +20,12 @@ class TechInfoTableViewCell: UITableViewCell {
     // MARK: - life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
     }
 
+    func fillData(_ attributeGroup: AttributeGroupRealmEntity, withIndex index: Int) {
+        lblTitle.text = attributeGroup.name
+        lblValue.text = attributeGroup.value
+        self.backgroundColor = (index % 2 == 0) ? UIColor(TMColor.PaleGrey) : UIColor.white
+    }
 }

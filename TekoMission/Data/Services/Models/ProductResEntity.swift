@@ -15,6 +15,7 @@ class ProductResEntity: NSObject {
     var price: Int = 0
     var priceBeforeSale: Int = 0
     var images: [String] = []
+    var attributeGroups: [AttributeGroupResEntity] = []
 
     override init() {
         super.init()
@@ -22,21 +23,27 @@ class ProductResEntity: NSObject {
 
     init(response: [String: JSON]) {
         if let data = response["sku"]?.stringValue {
-            sku = data
+            self.sku = data
         }
         if let data = response["name"]?.stringValue {
-            name = data
+            self.name = data
         }
         if let data = response["price"]?.dictionaryValue {
-            price = data["sellPrice"]?.intValue ?? 0
-            priceBeforeSale = data["supplierSalePrice"]?.intValue ?? 0
+            self.price = data["sellPrice"]?.intValue ?? 0
+            self.priceBeforeSale = data["supplierSalePrice"]?.intValue ?? 0
         }
         let data = response["images"]?.arrayValue ?? []
         for jsonItem in data {
             let mData = jsonItem.dictionaryValue
             if let url = mData["url"]?.stringValue {
-                images.append(url)
+                self.images.append(url)
             }
+        }
+
+        let aData = response["attributeGroups"]?.arrayValue ?? []
+        for jsonItem in aData {
+            let mData = jsonItem.dictionaryValue
+            self.attributeGroups.append(AttributeGroupResEntity.init(response: mData, sku: sku))
         }
     }
 }

@@ -13,12 +13,12 @@ class BaseResEntity: NSObject {
     var code: String = ""
 
     override init() {
-        code = ""
+        self.code = ""
         super.init()
     }
 
     init(response: [String: JSON]) {
-        code = response["code"]?.stringValue ?? ""
+        self.code = response["code"]?.stringValue ?? ""
     }
 
 }

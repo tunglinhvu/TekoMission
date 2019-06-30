@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-typealias DBHandler = (_ updateDone: Bool) -> Void
+typealias DBHandler = (_ isSuccess: Bool) -> Void
 
 class DBManager {
     static let shared = DBManager()
@@ -61,6 +61,19 @@ class DBManager {
         return []
     }
 
+    func saveProduct(_ product: ProductResEntity, completion: @escaping DBHandler) {
+        let realm: Realm = try! Realm()
+        do {
+            try realm.write {
+                let prodRealmObj = ProductDTO.responseToRealm(resObj: product)
+                realm.create(ProductRealmEntity.self, value: prodRealmObj, update: true)
+            }
+            completion(true)
+        } catch {
+            completion(false)
+        }
+    }
+
     func isHasProductInDBByQuery(_ query: String) -> Bool {
         let realm: Realm = try! Realm()
         let predicate = NSPredicate(format: "query = %@", query)
@@ -68,5 +81,12 @@ class DBManager {
             return true
         }
         return false
+    }
+
+    func getProductBySku(_ sku: String) -> ProductRealmEntity? {
+        let realm: Realm = try! Realm()
+        let predicate = NSPredicate(format: "sku = %@", sku)
+        let product = realm.objects(ProductRealmEntity.self).filter(predicate).first
+        return product
     }
 }

@@ -16,6 +16,8 @@
                 <outlet property="btnProPriceComparison" destination="8sm-fc-rDD" id="ccy-F0-cK6"/>
                 <outlet property="btnProTechInfo" destination="kc0-ow-MxP" id="gPO-Y8-V63"/>
                 <outlet property="collectionProSameKind" destination="N2M-ZL-sdV" id="bIo-DK-r22"/>
+                <outlet property="imvShowMore" destination="lSs-Wj-xKA" id="QHB-mK-oOZ"/>
+                <outlet property="imvWhiteShadow" destination="EJo-r3-0dD" id="ytR-9E-ucw"/>
                 <outlet property="lblName" destination="2zA-Ov-t4R" id="dBg-Nc-kKN"/>
                 <outlet property="lblOrderNum" destination="KHJ-wv-Yi1" id="GZh-cL-Na7"/>
                 <outlet property="lblOrderNumBottom" destination="yRS-Ls-lYb" id="Xoe-ON-iCm"/>
@@ -25,8 +27,9 @@
                 <outlet property="lblProName" destination="klF-HH-ayd" id="bbH-QB-nhT"/>
                 <outlet property="lblProPrice" destination="eyt-sD-CtK" id="shr-4I-8TC"/>
                 <outlet property="lblProPriceBeforeSale" destination="EZw-lk-haN" id="6yl-0a-SKR"/>
+                <outlet property="lblShowMore" destination="Yht-H4-jya" id="gu1-xe-E7B"/>
                 <outlet property="lblTotalPrice" destination="7eE-kD-gp2" id="3YV-BR-Wgy"/>
-                <outlet property="lcHeightTableTechInfo" destination="nFN-54-34i" id="0AH-IO-lgs"/>
+                <outlet property="lcHeightTableTechInfo" destination="9Nj-dA-aw4" id="nzb-IP-vMr"/>
                 <outlet property="lineProDescription" destination="iRv-tR-q6v" id="75I-4u-Qxq"/>
                 <outlet property="lineProPriceComparison" destination="sTJ-Qg-bKf" id="U63-Mx-Ad9"/>
                 <outlet property="lineProTechInfo" destination="xHg-NZ-kXz" id="ffq-dy-X45"/>
@@ -35,6 +38,8 @@
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewCarousel" destination="M04-W1-sCe" id="pg5-tN-LDG"/>
                 <outlet property="viewOutOfStock" destination="E6M-lL-XYC" id="KtK-HZ-BCD"/>
+                <outlet property="viewPriceComparison" destination="IB6-lv-iqM" id="uMe-OM-eAq"/>
+                <outlet property="viewProDescription" destination="JPt-2x-hJZ" id="N1g-Bd-I06"/>
                 <outlet property="viewProTag" destination="R7F-gN-70P" id="1ph-Rc-LVP"/>
                 <outlet property="viewShowMore" destination="6Af-yM-bUF" id="GOF-OC-esh"/>
             </connections>
@@ -137,7 +142,7 @@
                         <constraint firstAttribute="height" constant="1" id="AtS-ul-VCR"/>
                     </constraints>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1hd-Jf-qgL">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hd-Jf-qgL">
                     <rect key="frame" x="0.0" y="65" width="375" height="1135"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Wz-Tf-AD7">
@@ -337,6 +342,9 @@
                                                             <state key="selected" title="Mô tả sản phẩm">
                                                                 <color key="titleColor" red="0.14901960780000001" green="0.15686274510000001" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="openProDescription:" destination="-1" eventType="touchUpInside" id="QHx-IW-Lic"/>
+                                                            </connections>
                                                         </button>
                                                         <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_gradient_red" translatesAutoresizingMaskIntoConstraints="NO" id="iRv-tR-q6v">
                                                             <rect key="frame" x="8" y="39" width="109" height="2"/>
@@ -368,6 +376,9 @@
                                                             <state key="selected" title="Thông số kỹ thuật">
                                                                 <color key="titleColor" red="0.14901960780000001" green="0.15686274510000001" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="openProTechInfo:" destination="-1" eventType="touchUpInside" id="x7c-pX-0it"/>
+                                                            </connections>
                                                         </button>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_gradient_red" translatesAutoresizingMaskIntoConstraints="NO" id="xHg-NZ-kXz">
                                                             <rect key="frame" x="8" y="39" width="109" height="2"/>
@@ -399,6 +410,9 @@
                                                             <state key="selected" title="So sánh giá">
                                                                 <color key="titleColor" red="0.14901960780000001" green="0.15686274510000001" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="openPriceComparison:" destination="-1" eventType="touchUpInside" id="pLg-uE-EIB"/>
+                                                            </connections>
                                                         </button>
                                                         <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_gradient_red" translatesAutoresizingMaskIntoConstraints="NO" id="sTJ-Qg-bKf">
                                                             <rect key="frame" x="8" y="39" width="109" height="2"/>
@@ -432,17 +446,54 @@
                                                 <constraint firstAttribute="height" constant="1" id="72n-k0-BuJ"/>
                                             </constraints>
                                         </view>
-                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m7T-4U-lVq">
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PhM-80-UzA" customClass="CustomView" customModule="TekoMission" customModuleProvider="target">
                                             <rect key="frame" x="12" y="55" width="351" height="183"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JPt-2x-hJZ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="351" height="183"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m7T-4U-lVq">
+                                                    <rect key="frame" x="0.0" y="0.0" width="351" height="183"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="-1" id="aHY-jq-9eC"/>
+                                                        <outlet property="delegate" destination="-1" id="S5M-Ab-56X"/>
+                                                    </connections>
+                                                </tableView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IB6-lv-iqM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="351" height="183"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
+                                            </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="183" id="nFN-54-34i"/>
+                                                <constraint firstAttribute="bottom" secondItem="IB6-lv-iqM" secondAttribute="bottom" id="9B2-XA-B2i"/>
+                                                <constraint firstAttribute="height" constant="183" id="9Nj-dA-aw4"/>
+                                                <constraint firstItem="JPt-2x-hJZ" firstAttribute="top" secondItem="PhM-80-UzA" secondAttribute="top" id="EXA-5D-h7s"/>
+                                                <constraint firstAttribute="trailing" secondItem="IB6-lv-iqM" secondAttribute="trailing" id="FpU-Ge-YFL"/>
+                                                <constraint firstItem="m7T-4U-lVq" firstAttribute="leading" secondItem="PhM-80-UzA" secondAttribute="leading" id="XYl-8X-rHT"/>
+                                                <constraint firstAttribute="trailing" secondItem="JPt-2x-hJZ" secondAttribute="trailing" id="b8g-oB-vad"/>
+                                                <constraint firstAttribute="bottom" secondItem="m7T-4U-lVq" secondAttribute="bottom" id="fel-Tf-POo"/>
+                                                <constraint firstItem="m7T-4U-lVq" firstAttribute="top" secondItem="PhM-80-UzA" secondAttribute="top" id="lyd-PV-WfG"/>
+                                                <constraint firstAttribute="trailing" secondItem="m7T-4U-lVq" secondAttribute="trailing" id="mCd-Vh-b31"/>
+                                                <constraint firstAttribute="bottom" secondItem="JPt-2x-hJZ" secondAttribute="bottom" id="sQ1-2T-7p2"/>
+                                                <constraint firstItem="JPt-2x-hJZ" firstAttribute="leading" secondItem="PhM-80-UzA" secondAttribute="leading" id="tgS-B5-UE3"/>
+                                                <constraint firstItem="IB6-lv-iqM" firstAttribute="leading" secondItem="PhM-80-UzA" secondAttribute="leading" id="urH-Wb-Jd8"/>
+                                                <constraint firstItem="IB6-lv-iqM" firstAttribute="top" secondItem="PhM-80-UzA" secondAttribute="top" id="weJ-j8-I8V"/>
                                             </constraints>
-                                            <connections>
-                                                <outlet property="dataSource" destination="-1" id="aHY-jq-9eC"/>
-                                                <outlet property="delegate" destination="-1" id="S5M-Ab-56X"/>
-                                            </connections>
-                                        </tableView>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="8"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_shadow_gradient_from_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="EJo-r3-0dD">
+                                            <rect key="frame" x="0.0" y="133" width="375" height="125"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="125" id="m9o-Hd-jJW"/>
+                                            </constraints>
+                                        </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Af-yM-bUF">
                                             <rect key="frame" x="123.5" y="226" width="128" height="20"/>
                                             <subviews>
@@ -499,16 +550,19 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="0KI-gy-vI2" firstAttribute="leading" secondItem="kvT-iO-H7m" secondAttribute="leading" id="1as-9c-9qF"/>
+                                        <constraint firstAttribute="bottom" secondItem="PhM-80-UzA" secondAttribute="bottom" constant="20" id="A1I-1g-DAi"/>
                                         <constraint firstItem="Xcn-Wq-1wF" firstAttribute="top" secondItem="0KI-gy-vI2" secondAttribute="bottom" id="DHt-fi-bz5"/>
                                         <constraint firstAttribute="trailing" secondItem="0KI-gy-vI2" secondAttribute="trailing" id="DUY-bL-7xd"/>
-                                        <constraint firstItem="m7T-4U-lVq" firstAttribute="top" secondItem="Xcn-Wq-1wF" secondAttribute="bottom" constant="13" id="DYf-AM-cDL"/>
-                                        <constraint firstAttribute="trailing" secondItem="m7T-4U-lVq" secondAttribute="trailing" constant="12" id="J2U-17-PCG"/>
+                                        <constraint firstItem="PhM-80-UzA" firstAttribute="leading" secondItem="kvT-iO-H7m" secondAttribute="leading" constant="12" id="Dl2-MM-JuD"/>
                                         <constraint firstAttribute="bottom" secondItem="6Af-yM-bUF" secondAttribute="bottom" constant="12" id="SBM-Cp-Y9i"/>
-                                        <constraint firstAttribute="bottom" secondItem="m7T-4U-lVq" secondAttribute="bottom" constant="20" id="XSn-xH-tSI"/>
+                                        <constraint firstItem="EJo-r3-0dD" firstAttribute="leading" secondItem="kvT-iO-H7m" secondAttribute="leading" id="WsN-6z-qNx"/>
                                         <constraint firstItem="Xcn-Wq-1wF" firstAttribute="leading" secondItem="kvT-iO-H7m" secondAttribute="leading" id="Y4Q-rn-Xkz"/>
+                                        <constraint firstAttribute="trailing" secondItem="PhM-80-UzA" secondAttribute="trailing" constant="12" id="YKl-1M-PFC"/>
                                         <constraint firstAttribute="trailing" secondItem="Xcn-Wq-1wF" secondAttribute="trailing" id="fz2-DJ-50d"/>
                                         <constraint firstItem="6Af-yM-bUF" firstAttribute="centerX" secondItem="kvT-iO-H7m" secondAttribute="centerX" id="ixO-TX-lk6"/>
-                                        <constraint firstItem="m7T-4U-lVq" firstAttribute="leading" secondItem="kvT-iO-H7m" secondAttribute="leading" constant="12" id="xmW-OA-db8"/>
+                                        <constraint firstAttribute="trailing" secondItem="EJo-r3-0dD" secondAttribute="trailing" id="jQr-8C-Nt7"/>
+                                        <constraint firstAttribute="bottom" secondItem="EJo-r3-0dD" secondAttribute="bottom" id="s3q-VN-vSF"/>
+                                        <constraint firstItem="PhM-80-UzA" firstAttribute="top" secondItem="Xcn-Wq-1wF" secondAttribute="bottom" constant="13" id="sfI-ZU-Zgi"/>
                                         <constraint firstItem="0KI-gy-vI2" firstAttribute="top" secondItem="kvT-iO-H7m" secondAttribute="top" id="yNB-GV-Hz5"/>
                                     </constraints>
                                 </view>
@@ -710,6 +764,7 @@
     </objects>
     <resources>
         <image name="bg_gradient_red" width="250" height="44"/>
+        <image name="bg_shadow_gradient_from_bottom" width="96" height="19"/>
         <image name="ic_add_cart" width="24" height="24"/>
         <image name="ic_add_circle" width="24" height="24"/>
         <image name="ic_arrow_back_black" width="24" height="24"/>
