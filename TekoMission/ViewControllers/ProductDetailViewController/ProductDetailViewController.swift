@@ -45,7 +45,8 @@ class ProductDetailViewController: BaseViewController {
     @IBOutlet weak var pageControl: UIPageControl!
 
     // MARK: - variables
-    var product: ProductRealmEntity!
+    var product: ProductRealmEntity?
+    var productSku = ""
     var currentOrderNum: Int = 0
     var currentInfoState: InfoState = .techInfo
     var isConfigCarousel = false
@@ -66,12 +67,19 @@ class ProductDetailViewController: BaseViewController {
         self.setupTableView()
         self.setupCollectionView()
         self.setupCarousel()
-        self.fillData(product)
-        self.setupPageControl()
+        self.getProductInfoFromDB()
     }
 
     override func setupNavigationBar() {
         super.setupNavigationBar()
+    }
+
+    func getProductInfoFromDB() {
+        self.product = DBManager.shared.getProductBySku(self.productSku)
+        if let product = self.product {
+            self.fillData(product)
+            self.setupPageControl()
+        }
     }
 
     func fillData(_ product: ProductRealmEntity) {
@@ -113,10 +121,12 @@ class ProductDetailViewController: BaseViewController {
     }
 
     func updateCurrentOrder() {
-        lblOrderNum.text = "\(currentOrderNum)"
-        lblOrderNumBottom.text = "\(currentOrderNum)"
-        let totalPrice = product.price * currentOrderNum
-        lblTotalPrice.text = Utils.convertPriceToText(price:totalPrice)
+        if let product = self.product {
+            lblOrderNum.text = "\(currentOrderNum)"
+            lblOrderNumBottom.text = "\(currentOrderNum)"
+            let totalPrice = product.price * currentOrderNum
+            lblTotalPrice.text = Utils.convertPriceToText(price:totalPrice)
+        }
     }
 
     // MARK: - actions

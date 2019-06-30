@@ -141,7 +141,7 @@ extension ProductsListViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let product = self.listProducts[indexPath.row]
         let vc = ProductDetailViewController.instantiateFromNib()
-        vc.product = product
+        vc.productSku = product.sku
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
