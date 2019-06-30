@@ -9,6 +9,8 @@
 import Foundation
 import RealmSwift
 
+typealias DBHandler = (_ updateDone: Bool) -> Void
+
 class DBManager {
     static let shared = DBManager()
 
@@ -16,32 +18,53 @@ class DBManager {
 
     }
 
-    func saveProducts(_ products: [ProductResEntity], query: String) {
+    func saveProducts(_ products: [ProductResEntity], query: String, completion: @escaping DBHandler) {
         let realm: Realm = try! Realm()
-        for product in products {
-            let realmObj = ProductDTO.responseToRealm(resObj: product)
-            let predicate = NSPredicate(format: "query = %@ AND sku = %@", query, product.sku)
-            if let _ = realm.objects(ProductRealmEntity.self).filter(predicate).first {
-                // already added
-                return
+        do {
+            try realm.write {
+                for product in products {
+                    // update products table
+                    let prodRealmObj = ProductDTO.responseToRealm(resObj: product)
+                    realm.add(prodRealmObj, update: true)
+
+                    // update queries table
+                    let predicate = NSPredicate(format: "query = %@ AND sku = %@", query, product.sku)
+                    if let _ = realm.objects(QueryRealmEntity.self).filter(predicate).first {
+                        // already added query
+                        break
+                    }
+                    let queryRealmObj = QueryRealmEntity()
+                    queryRealmObj.query = query
+                    queryRealmObj.sku = product.sku
+                    realm.add(queryRealmObj)
+                }
+                completion(true)
             }
-            realmObj.query = query
-            try! realm.write {
-                realm.add(realmObj)
-            }
+        } catch {
+            completion(false)
         }
     }
 
-    func getProductsByQuery(_ query: String) -> Results<ProductRealmEntity> {
+    func getProductsByQuery(_ query: String) -> [ProductRealmEntity] {
         let realm: Realm = try! Realm()
-        let predicate = NSPredicate(format: "query = %@", query)
-        return realm.objects(ProductRealmEntity.self).filter(predicate)
+        let queryPredicate = NSPredicate(format: "query = %@", query)
+        let listSku: [QueryRealmEntity] = Array(realm.objects(QueryRealmEntity.self).filter(queryPredicate))
+        let listSkuWithStringOnly = List<String>()
+        for item in listSku {
+            listSkuWithStringOnly.append(item.sku)
+        }
+        if listSkuWithStringOnly.count > 0 {
+            let proPredicate = NSPredicate(format: "sku IN %@", listSkuWithStringOnly)
+            let listProduct = realm.objects(ProductRealmEntity.self).filter(proPredicate)
+            return Array(listProduct)
+        }
+        return []
     }
 
     func isHasProductInDBByQuery(_ query: String) -> Bool {
         let realm: Realm = try! Realm()
         let predicate = NSPredicate(format: "query = %@", query)
-        if let _ = realm.objects(ProductRealmEntity.self).filter(predicate).first {
+        if let _ = realm.objects(QueryRealmEntity.self).filter(predicate).first {
             return true
         }
         return false

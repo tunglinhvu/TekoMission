@@ -522,7 +522,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="N2M-ZL-sdV">
-                                            <rect key="frame" x="12" y="44" width="351" height="222"/>
+                                            <rect key="frame" x="12" y="44" width="351" height="236"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WDk-7t-qvv">
                                                 <size key="itemSize" width="50" height="50"/>
@@ -540,7 +540,7 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="N2M-ZL-sdV" secondAttribute="trailing" constant="12" id="BXu-77-hvW"/>
                                         <constraint firstItem="N2M-ZL-sdV" firstAttribute="leading" secondItem="obd-2P-Wwy" secondAttribute="leading" constant="12" id="Bxc-KT-CDV"/>
-                                        <constraint firstAttribute="bottom" secondItem="N2M-ZL-sdV" secondAttribute="bottom" constant="16" id="NBi-DH-J0p"/>
+                                        <constraint firstAttribute="bottom" secondItem="N2M-ZL-sdV" secondAttribute="bottom" constant="2" id="NBi-DH-J0p"/>
                                         <constraint firstItem="rAA-Pq-sVB" firstAttribute="top" secondItem="obd-2P-Wwy" secondAttribute="top" constant="12" id="bK3-Mt-zir"/>
                                         <constraint firstItem="rAA-Pq-sVB" firstAttribute="leading" secondItem="obd-2P-Wwy" secondAttribute="leading" constant="12" id="gnv-6V-ZQJ"/>
                                         <constraint firstItem="N2M-ZL-sdV" firstAttribute="top" secondItem="rAA-Pq-sVB" secondAttribute="bottom" constant="16" id="hPv-JB-KZL"/>

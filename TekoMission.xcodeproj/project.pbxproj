@@ -51,6 +51,7 @@
 		CA6ACC3E22C79E90002118A3 /* SlideImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6ACC3D22C79E90002118A3 /* SlideImageView.xib */; };
 		CA9A3E1022C8632C009FF2BE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA9A3E0F22C8632C009FF2BE /* Localizable.strings */; };
 		CA9A3E1722C866C1009FF2BE /* ProductDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9A3E1622C866C1009FF2BE /* ProductDTO.swift */; };
+		CA9A3E1922C87D3B009FF2BE /* RealmExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9A3E1822C87D3B009FF2BE /* RealmExtensions.swift */; };
 		CAAA037422C6002E00909F48 /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAA037322C6002E00909F48 /* Reach.swift */; };
 		CAAA037C22C6003700909F48 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAA037622C6003600909F48 /* iCarousel.m */; };
 		CAAA037D22C6003700909F48 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = CAAA037A22C6003600909F48 /* MBProgressHUD.m */; };
@@ -110,6 +111,7 @@
 		CA6ACC3D22C79E90002118A3 /* SlideImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SlideImageView.xib; sourceTree = "<group>"; };
 		CA9A3E0F22C8632C009FF2BE /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CA9A3E1622C866C1009FF2BE /* ProductDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDTO.swift; sourceTree = "<group>"; };
+		CA9A3E1822C87D3B009FF2BE /* RealmExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmExtensions.swift; sourceTree = "<group>"; };
 		CAAA037322C6002E00909F48 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
 		CAAA037622C6003600909F48 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		CAAA037722C6003600909F48 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				CA6ACC2A22C77DBF002118A3 /* UILabelExtensions.swift */,
 				CA6ACC3522C79419002118A3 /* StringExtensions.swift */,
 				CA6ACC3922C79B62002118A3 /* UICollectionViewExtension.swift */,
+				CA9A3E1822C87D3B009FF2BE /* RealmExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				CA3A692822C5BE8000F08A87 /* ProductsListViewController.swift in Sources */,
 				CAAA037D22C6003700909F48 /* MBProgressHUD.m in Sources */,
 				CA3CF1E022C711030052EA71 /* UIImageViewExtensions.swift in Sources */,
+				CA9A3E1922C87D3B009FF2BE /* RealmExtensions.swift in Sources */,
 				CAAA038522C6409300909F48 /* ProductsListTableViewCell.swift in Sources */,
 				CA6ACC1122C71F43002118A3 /* Constant.swift in Sources */,
 				CA6ACC0B22C71DF0002118A3 /* CustomNavigationController.swift in Sources */,

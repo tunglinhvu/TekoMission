@@ -58,14 +58,14 @@ class ProductsListViewController: BaseViewController {
                 self.showToast(message: responseResult.description)
                 return
             }
-
-            DBManager.shared.saveProducts(productsListRes.products, query: query)
-            self.initDataFromRealmDBWithQuery(query)
+            DBManager.shared.saveProducts(productsListRes.products, query: query, completion: { (isSuccess) in
+                self.initDataFromRealmDBWithQuery(query)
+            })
         }
     }
 
     func initDataFromRealmDBWithQuery(_ query: String) {
-        self.listProducts = Array(DBManager.shared.getProductsByQuery(query))
+        self.listProducts = DBManager.shared.getProductsByQuery(query)
         self.tableProducts.reloadData()
     }
 

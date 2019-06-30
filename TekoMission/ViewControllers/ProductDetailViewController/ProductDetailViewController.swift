@@ -186,7 +186,7 @@ extension ProductDetailViewController: UICollectionViewDelegate, UICollectionVie
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: ProSameKindCollectionViewCell.width, height: ProSameKindCollectionViewCell.height)
         layout.minimumLineSpacing = 12
-        layout.minimumInteritemSpacing = 12
+        layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
         collectionProSameKind.collectionViewLayout.invalidateLayout()
         collectionProSameKind.setCollectionViewLayout(layout, animated: false)

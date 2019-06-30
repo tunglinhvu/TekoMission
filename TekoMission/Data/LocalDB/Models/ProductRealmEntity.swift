@@ -16,9 +16,8 @@ class ProductRealmEntity: Object {
     @objc dynamic var price: Int = 0
     @objc dynamic var priceBeforeSale: Int = 0
     var images = List<String>()
-    @objc dynamic var query = ""
 
     override class func primaryKey() -> String? {
-        return "id"
+        return "sku"
     }
 }
