@@ -36,15 +36,13 @@ class ProductsListViewController: BaseViewController {
         self.setupTableView()
         self.setupTextField()
 
-        if DBManager.shared.isHasProductInDBByQuery("") {
-            self.initDataFromRealmDBWithQuery("")
-        } else {
-            self.initFirstData()
-        }
+        self.initFirstData()
     }
 
     func initFirstData() {
-        self.requestProductsWithQuery("", withLoadingIndicator: true)
+        self.initDataFromRealmDBWithQuery("")
+        let isShowIndicator = !(DBManager.shared.isHasProductInDBByQuery(""))
+        self.requestProductsWithQuery("", withLoadingIndicator: isShowIndicator)
     }
 
     func requestProductsWithQuery(_ query: String, withLoadingIndicator loadingIndicator: Bool) {
@@ -109,11 +107,9 @@ extension ProductsListViewController: UITextFieldDelegate {
     func performAction() {
         //action events
         let query = tfSearch.text ?? ""
-        if DBManager.shared.isHasProductInDBByQuery(query) {
-            self.initDataFromRealmDBWithQuery(query)
-        } else {
-            self.requestProductsWithQuery(query, withLoadingIndicator: true)
-        }
+        self.initDataFromRealmDBWithQuery(query)
+        let isShowIndicator = !(DBManager.shared.isHasProductInDBByQuery(query))
+        self.requestProductsWithQuery(query, withLoadingIndicator: isShowIndicator)
     }
 }
 

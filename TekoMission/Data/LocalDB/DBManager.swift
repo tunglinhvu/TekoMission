@@ -31,7 +31,7 @@ class DBManager {
                     let predicate = NSPredicate(format: "query = %@ AND sku = %@", query, product.sku)
                     if let _ = realm.objects(QueryRealmEntity.self).filter(predicate).first {
                         // already added query
-                        break
+                        continue
                     }
                     let queryRealmObj = QueryRealmEntity()
                     queryRealmObj.query = query
